@@ -50,6 +50,7 @@ docker compose down
 
 ## 📘 Resources
 [Redpanda Docs](https://docs.redpanda.com/home/)
+
 [Redpanda Console Docs](https://docs.redpanda.com/current/console/)
 
 Based on [Redpanda Docker compose](https://github.com/redpanda-data/docs/tree/main/tests/docker-compose).
