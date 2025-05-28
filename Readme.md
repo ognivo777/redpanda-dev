@@ -45,8 +45,8 @@ docker compose down
 ```
 
 ## 🛠 Configuration 
- - `docker-compose.yml`: Defines Redpanda and Console services.
-- `bootstrap.yml`: Provides initial configuration for the Console, including cluster connection and UI options.
+ - `docker-compose.yml`: Defines Redpanda and Console docker compose services.
+- `bootstrap.yml`: Provides initial configuration for the redpanda cluster.
 
 ## 📘 Resources
 [Redpanda Docs](https://docs.redpanda.com/home/)
