@@ -48,6 +48,15 @@ docker compose down
  - `docker-compose.yml`: Defines Redpanda and Console docker compose services.
 - `bootstrap.yml`: Provides initial configuration for the redpanda cluster.
 
+
+## Tips
+### Start with a Clean Broker
+Maybe you want to start with a clean state each time? Run:
+```bash
+docker compose up --renew-anon-volumes --force-recreate
+```
+This will recreate the containers and discard any existing data.
+
 ## 📘 Resources
 [Redpanda Docs](https://docs.redpanda.com/home/)
 
