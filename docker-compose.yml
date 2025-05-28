@@ -1,0 +1,49 @@
+name: redpanda-quickstart-single-broker
+networks:
+  redpanda_network:
+    driver: bridge
+# volumes:
+  # redpanda-0: null
+services:
+  ##################
+  # Redpanda Brokers #
+  ##################
+  redpanda:
+    command:
+      - redpanda
+      - start
+      - --kafka-addr internal://0.0.0.0:19092,external://0.0.0.0:9092
+      - --advertise-kafka-addr internal://redpanda:19092,external://localhost:9092
+      - --mode dev-container
+      # # Tells Seastar (the framework Redpanda uses under the hood) to use 1 core on the system.
+      - --smp 1
+      - --default-log-level=info
+    image: redpandadata/redpanda
+    container_name: redpanda
+    # Sets the username and password of the bootstrap SCRAM superuser
+    # See https://docs.redpanda.com/current/deploy/deployment-option/self-hosted/manual/production/production-deployment/#bootstrap-a-user-account
+    # environment:
+      # RP_BOOTSTRAP_USER: "superuser:secretpassword"
+    volumes:
+#      - redpanda-0:/var/lib/redpanda/data
+      - ./bootstrap.yml:/etc/redpanda/.bootstrap.yaml
+    networks:
+      - redpanda_network
+    ports:
+      - 9092:9092
+
+  ####################
+  # Redpanda Console #
+  ####################
+  console:
+    image: redpandadata/console
+    container_name: redpanda-console
+    environment:
+      KAFKA_BROKERS: "redpanda:19092"
+    networks:
+      - redpanda_network
+    ports:
+      - 8080:8080
+    depends_on:
+      - redpanda
+      
