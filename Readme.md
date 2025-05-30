@@ -1,4 +1,4 @@
-# 🐼 Redpanda + Console (Minimal Dev Stack)
+# 🐼 Redpanda + Console (Minimal Dev Stack - Kafka lightweight replacement)
 
 This repository provides a **lightweight, minimal Kafka-compatible development setup** using [Redpanda](https://redpanda.com/) — a high-performance, Zookeeper-free streaming platform — and [Redpanda Console](https://docs.redpanda.com/current/console/) for local development and debugging.
 
